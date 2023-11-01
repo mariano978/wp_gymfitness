@@ -15,8 +15,9 @@
         <header class="header">
             <div class="contenedor barra-navegacion">
                 <div class="logo">
-                    <!-- get_template_directory_uri() retorna la ubicacion raiz del tema en el que estamos -->
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/logo_black.png" alt="logotipo">
+                    <a href="<?php echo site_url("/"); ?>">
+                        <!-- get_template_directory_uri() retorna la ubicacion raiz del tema en el que estamos -->
+                        <img src="<?php echo get_template_directory_uri(); ?>/img/logo_black.png" alt="logotipo"></a>
                 </div>
                 <?php
                 //theme_location indica que menu de todos queremos renderizar

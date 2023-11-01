@@ -16,17 +16,21 @@ get_header(); ?>
         //obtener los ids
         $galeria_imagenes_id = explode(",", $galeria["ids"]);
     ?>
-        <ul class="galeria-imagenes">
+        <ul class="galeria-imagenes" id="gallery">
             <?php
             foreach ($galeria_imagenes_id as $id) {
                 //obtenemos los src
-                $imagen_small = wp_get_attachment_image_src($id, "large")[0];
-                $imagen_full = wp_get_attachment_image_src($id, "full")[0];
+                $imagen_small = wp_get_attachment_image_src($id, "large");
+                $imagen_full = wp_get_attachment_image_src($id, "full");
                 $alt_text = get_post_meta($id, '_wp_attachment_image_alt', true);
+             
+                $width = $imagen_full[1];
+                $height = $imagen_full[2] ;
             ?>
+
                 <li>
-                    <a href="<?php echo $imagen_full; ?>">
-                        <img src="<?php echo $imagen_small; ?>" alt="<?php echo empty($alt_text) ? "Imagen Galeria" :  $alt_text; ?>">
+                    <a href="<?php echo $imagen_full[0]; ?>" data-pswp-width="<?php echo $width; ?>" data-pswp-height="<?php echo $height; ?>" target="_blank">
+                        <img src="<?php echo $imagen_small[0]; ?>" alt="<?php echo empty($alt_text) ? "Imagen Galeria" :  $alt_text; ?>">
                     </a>
                 </li>
 
